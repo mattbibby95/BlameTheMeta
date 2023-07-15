@@ -29,30 +29,32 @@ function handleRoute(index) {
 </script>
 
 <template>
-    <div class="BasicMatchCard" v-for="(match, index) in matches.data">
-        <img @click="handleRoute(index)" v-bind:src="'https://cdn.cloudflare.steamstatic.com' + heroesPlayed[index].img" width="96" height="54"/>
-        <div class="InfoSection">
-            <h1>
-                Hero Played
-            </h1>
-            <h2>
-                {{heroesPlayed[index].localized_name}}
-            </h2>
-        </div>
-        <div class="InfoSection">
-            <h1>
-                Match Outcome
-            </h1>
-            <h2 v-html="winOrLose(index)">
-            </h2>
-        </div>
-        <div class="InfoSection">
-            <h1>
-                KDA
-            </h1>
-            <h2>
-                {{ match.kills }} / {{ match.deaths }} / {{ match.assists }}
-            </h2>
+    <div v-for="(match, index) in matches.data">
+        <div class="BasicMatchCard" @click="handleRoute(index)">
+            <img v-bind:src="'https://cdn.cloudflare.steamstatic.com' + heroesPlayed[index].img" width="96" height="54"/>
+            <div class="InfoSection">
+                <h1>
+                    Hero Played
+                </h1>
+                <h2>
+                    {{heroesPlayed[index].localized_name}}
+                </h2>
+            </div>
+            <div class="InfoSection">
+                <h1>
+                    Match Outcome
+                </h1>
+                <h2 v-html="winOrLose(index)">
+                </h2>
+            </div>
+            <div class="InfoSection">
+                <h1>
+                    KDA
+                </h1>
+                <h2>
+                    {{ match.kills }} / {{ match.deaths }} / {{ match.assists }}
+                </h2>
+            </div>
         </div>
     </div>
 </template>
@@ -69,7 +71,8 @@ function handleRoute(index) {
   height: 90px;
   min-width: 1000px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  cursor: pointer;
 }
 
 .InfoSection {
