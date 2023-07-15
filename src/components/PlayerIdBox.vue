@@ -9,6 +9,10 @@ const interval = ref()
 const flavourTextOptions = ref(['choked', 'owned', 'beat the meta', 'had an unwinnable one', 'had a free game', 'beat the odds', 'proved the meta'])
 const playerId = ref()
 
+function savePlayerIdToLocalStorage() {
+  localStorage.playerId = playerInfoStore.playerId
+}
+
 watch(playerId, (newID) => {
   playerInfoStore.playerId = newID
 })
@@ -26,11 +30,11 @@ onUnmounted(() => {
 
 <template>
   <div class="PlayerIdBox">
-    <h1>Is it time to blame the <span class="TextAccent">meta</span>?</h1>
-    <p>Enter your player ID below and we'll analyse your past 10 matches to see if you <span
+    <h1>Is it time to blame the <span class="TextAccent">META</span>?</h1>
+    <p>Enter your player ID below and we'll analyse your past 20 matches to see if you <span
         class="TextHighlight">{{ flavourText }}</span></p>
     <input v-model="playerId" type="text" class="TextInput" placeholder="Player ID Example: 43760878" />
-    <RouterLink class="button-40" to="/matches">Let's Go! <font-awesome-icon icon="fa-regular fa-circle-right"
+    <RouterLink @click="savePlayerIdToLocalStorage" class="button-40" to="/matches">Let's Go! <font-awesome-icon icon="fa-regular fa-circle-right"
         size="2xl" style="color: #cbccca;" /></RouterLink>
   </div>
 </template>
