@@ -1,7 +1,7 @@
 <script setup>
-import { playerInfoStore } from '../helpers/playerInfo';
 import heroes from '../assets/heroes.json'
 import axios from 'axios';
+import router from '../router/index'
 
 const playerId = localStorage.getItem('playerId');
 
@@ -21,12 +21,16 @@ function winOrLose(index) {
     return `<span class='Defeat'>Defeat</span>`
 }
 
+function handleRoute(index) {
+   router.push(`/matches/${matches.data[index].match_id}`) 
+}
+
 
 </script>
 
 <template>
     <div class="BasicMatchCard" v-for="(match, index) in matches.data">
-        <img v-bind:src="'https://cdn.cloudflare.steamstatic.com' + heroesPlayed[index].img" width="256" height="144"/>
+        <img @click="handleRoute(index)" v-bind:src="'https://cdn.cloudflare.steamstatic.com' + heroesPlayed[index].img" width="96" height="54"/>
         <div class="InfoSection">
             <h1>
                 Hero Played
@@ -58,10 +62,11 @@ function winOrLose(index) {
 .BasicMatchCard {
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   background-color: #F3F5F1;
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
   display: flex;
-  width: 40%;
+  width: 48%;
+  height: 90px;
   min-width: 1000px;
   display: flex;
   justify-content: space-around;
@@ -78,6 +83,8 @@ function winOrLose(index) {
 img {
     margin-top: auto;
     margin-bottom: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 5px;
 }
 
 .InfoSection h2 {
