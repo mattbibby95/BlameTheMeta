@@ -10,19 +10,16 @@ const flavourTextOptions = ref(['choked', 'owned', 'beat the meta', 'had an unwi
 const playerId = ref()
 
 watch(playerId, (newID) => {
-  console.log(`ID changed to ${newID}`)
   playerInfoStore.playerId = newID
 })
 
 onMounted(() => {
-  console.log(`the component is now mounted.`)
   interval.value = setInterval(() => {
     flavourText.value = flavourTextOptions.value[Math.floor(Math.random() * flavourTextOptions.value.length)]
   }, 2000)
 })
 
 onUnmounted(() => {
-  console.log('destroying interval')
   clearInterval(interval)
 })
 </script>
@@ -33,7 +30,7 @@ onUnmounted(() => {
     <p>Enter your player ID below and we'll analyse your past 10 matches to see if you <span
         class="TextHighlight">{{ flavourText }}</span></p>
     <input v-model="playerId" type="text" class="TextInput" placeholder="Player ID Example: 43760878" />
-    <RouterLink class="button-40" to="/about">Let's Go! <font-awesome-icon icon="fa-regular fa-circle-right"
+    <RouterLink class="button-40" to="/matches">Let's Go! <font-awesome-icon icon="fa-regular fa-circle-right"
         size="2xl" style="color: #cbccca;" /></RouterLink>
   </div>
 </template>
