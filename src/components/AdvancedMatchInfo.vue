@@ -38,10 +38,10 @@ direPlayers.forEach((player) => {
 })
 
 console.log(radiantWinrates)
-const radiantTotalWinrate = radiantWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0) / 500
+const radiantTotalWinrate = radiantWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0)
 console.log(radiantTotalWinrate)
 console.log(direWinrates)
-const direTotalWinrate = direWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0) / 500
+const direTotalWinrate = direWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0)
 console.log(direTotalWinrate)
 
 

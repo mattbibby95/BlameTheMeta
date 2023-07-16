@@ -13,12 +13,12 @@ function winOrLose(index) {
     const playerIsOnRadiant = matchToCheck.player_slot < 128;
     const radiantWins = matchToCheck.radiant_win === true;
     if(playerIsOnRadiant && radiantWins){
-        return `<span class='Victory'>Victory</span>`
+        return `<span style='color:#D59843' class='Victory'>Victory</span>`
     }
     if (!playerIsOnRadiant && !radiantWins){
-        return `<span class='Victory'>Victory</span>`
+        return `<span style='color:#D59843' class='Victory'>Victory</span>`
     }
-    return `<span class='Defeat'>Defeat</span>`
+    return `<span style='color:#b04e53' class='Defeat'>Defeat</span>`
 }
 
 function handleRoute(index) {
