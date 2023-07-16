@@ -3,10 +3,9 @@ import heroes from '../assets/heroes.json'
 import axios from 'axios';
 import router from '../router/index'
 import { getPlayersByTeam, determineWinrateForHero } from '../helpers/MatchParsingHelpers'
+import teamInfo from '../components/teamInfo.vue';
 
 const currentMatchId = router.currentRoute.value.params.matchid
-console.log(`currentmatchid ${currentMatchId}`);
-console.log(`matchIdInLocalStorage ${localStorage.getItem('currentMatchId')}`);
 
 if (localStorage.getItem('currentMatchId') !== currentMatchId) {
     localStorage.currentMatchId = currentMatchId;
@@ -23,17 +22,55 @@ if (!localStorage.getItem('allHeroStats')) {
 
 const match = JSON.parse(localStorage.getItem('currentMatchData'));
 const allHeroStats = JSON.parse(localStorage.getItem('allHeroStats'));
-console.log(allHeroStats);
 
 const radiantPlayers = getPlayersByTeam('radiant', match);
 const direPlayers = getPlayersByTeam('dire', match);
-const amData = determineWinrateForHero(94, allHeroStats);
-// const heroesPlayed = matches.data.map(match => heroes.heroes.find(hero => hero.id === match.hero_id))
+
+const radiantWinrates = []
+const direWinrates = []
+
+radiantPlayers.forEach((player) => {
+    radiantWinrates.push(determineWinrateForHero(player.hero_id, allHeroStats))
+})
+
+direPlayers.forEach((player) => {
+    direWinrates.push(determineWinrateForHero(player.hero_id, allHeroStats))
+})
+
+console.log(radiantWinrates)
+const radiantTotalWinrate = radiantWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0) / 500
+console.log(radiantTotalWinrate)
+console.log(direWinrates)
+const direTotalWinrate = direWinrates.reduce((accumulator, winrate) => accumulator + winrate, 0) / 500
+console.log(direTotalWinrate)
+
 
 </script>
 
 <template>
-    <div>
-        {{ match.players[0] }}
+    <div class="AdvancedMatchViewContainer">
+        <div class="TeamContainer">
+            <teamInfo :teamInfo="radiantPlayers" :allHeroStats="allHeroStats" :teamWinrates="radiantWinrates" :teamOverallWin="radiantTotalWinrate" teamName="Radiant"></teamInfo>
+        </div>
+        <div class="TeamContainer">
+            <teamInfo :teamInfo="direPlayers" :allHeroStats="allHeroStats" :teamWinrates="direWinrates" :teamOverallWin="direTotalWinrate" teamName="Dire"></teamInfo>
+        </div>
     </div>
 </template>
+
+<style scoped>
+.AdvancedMatchViewContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-content: space-evenly;
+}
+.TeamContainer{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+}
+</style>
