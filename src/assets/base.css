@@ -9,10 +9,10 @@
 body {
   min-height: 100vh;
   color: #1f2f3c;
-  background-color: #F3F5F1;
+  /* background-color: #F3F5F1;
   opacity: 1;
   background: radial-gradient(circle, transparent 20%, #F3F5F1 20%, #F3F5F1 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #F3F5F1 20%, #F3F5F1 80%, transparent 80%, transparent) 22.5px 22.5px, linear-gradient(#dadcd8 1.8px, transparent 1.8px) 0 -0.9px, linear-gradient(90deg, #dadcd8 1.8px, #F3F5F1 1.8px) -0.9px 0;
-  background-size: 45px 45px, 45px 45px, 22.5px 22.5px, 22.5px 22.5px;
+  background-size: 45px 45px, 45px 45px, 22.5px 22.5px, 22.5px 22.5px; */
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -21,11 +21,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #879AAE;
+  background: radial-gradient(circle, transparent 20%, #879AAE 20%, #879AAE 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #879AAE 20%, #879AAE 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#4b5661 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #4b5661 0.8px, #879AAE 0.8px) -0.4px 0;
+  background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
 }
 
-.Victory {
-    color: #D59843;
+main{
+  opacity: 1;
 }
-.Defeat {
-    color: #b04e53
-}
+
