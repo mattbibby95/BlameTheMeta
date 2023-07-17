@@ -21,7 +21,7 @@ const heroImg = heroes.heroes.find(hero => hero.id === props.playerInfo.hero_id)
     </div>
     <div class="PlayerInfoSection">
         <h3>Gold</h3>
-        <p>{{ playerInfo.gold }}</p>
+        <p>{{ playerInfo.gold + playerInfo.gold_spent }}</p>
     </div>
     <div class="PlayerInfoSection">
         <h3>Win %</h3>
