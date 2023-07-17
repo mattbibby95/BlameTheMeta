@@ -48,7 +48,6 @@ console.log(direTotalWinrate)
 </script>
 
 <template>
-    <div class="AdvancedMatchViewContainer">
         <div class="TeamContainer">
             <teamInfo :teamInfo="radiantPlayers" :allHeroStats="allHeroStats" :teamWinrates="radiantWinrates" 
                 :teamOverallWin="radiantTotalWinrate" teamName="Radiant" :winner="match.radiant_win" :enemyWinRate="direTotalWinrate"></teamInfo>
@@ -57,22 +56,13 @@ console.log(direTotalWinrate)
             <teamInfo :teamInfo="direPlayers" :allHeroStats="allHeroStats" :teamWinrates="direWinrates" 
                 :teamOverallWin="direTotalWinrate" teamName="Dire" :winner="match.radiant_win" :enemyWinRate="radiantTotalWinrate"></teamInfo>
         </div>
-    </div>
 </template>
 
 <style scoped>
-.AdvancedMatchViewContainer {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-content: center;
-    justify-content: space-evenly;
-}
 .TeamContainer{
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
 }
 </style>

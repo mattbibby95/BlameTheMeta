@@ -3,7 +3,7 @@ import BasicMatchInfo from '../components/BasicMatchInfo.vue'
 </script>
 
 <template>
-  <div>
+  <div class="MatchOverviewContainer">
     <div class="ExplanationBar">
       <div class="ExplanationContent">
         <h2>Matches Overview</h2>
@@ -28,20 +28,72 @@ import BasicMatchInfo from '../components/BasicMatchInfo.vue'
 </template>
 
 <style>
-.MatchInfoHolder {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 90vh;
-  overflow-y: hidden;
-  align-content: center;
+
+.MatchOverviewContainer {
+    width: 98vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr;
+  }
+  .MatchInfoHolder {
+    grid-row-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    max-width: 100%;
+    justify-items: center;
+  }
+
+ @media (min-width: 900px) { 
+    .MatchOverviewContainer {
+    width: 98vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr;
+  }
+  .MatchInfoHolder {
+    grid-row-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    max-width: 100%;
+    justify-items: center;
+  }
+ }
+
+@media (min-width: 1500px) {
+    .MatchOverviewContainer {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr;
+  }
+
+  .MatchInfoHolder {
+    grid-row-start: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    max-width: 100%;
+    justify-items: center;
+  }
 }
+
 .ExplanationBar {
-  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 .ExplanationContent {
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
